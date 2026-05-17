@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contrarian Rocket — A launched contrarian brand in 30 days</title>
+<meta name="description" content="A 30-day sprint for solopreneurs and coaches whose brand isn't getting noticed. Five stages. Launched positioning, offer, and content by day 30." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F1EB;
+    --bg-2: #ECE7DC;
+    --ink: #1A1A1A;
+    --ink-2: #4A4A47;
+    --ink-3: #8A8A85;
+    --accent: #D94F30;
+    --accent-deep: #A83B22;
+    --line: rgba(26, 26, 26, 0.12);
+    --line-2: rgba(26, 26, 26, 0.25);
+    --paper: #FBF8F2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .serif { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  .container-narrow { max-width: 780px; margin: 0 auto; padding: 0 32px; }
+
+  nav {
+    padding: 28px 0;
+    border-bottom: 0.5px solid var(--line);
+    position: sticky;
+    top: 0;
+    background: rgba(244, 241, 235, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 50;
+  }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+  .logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 24px;
+    letter-spacing: -0.01em;
+  }
+  .logo .dot { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    color: var(--ink-2);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--ink);
+    color: var(--paper) !important;
+    padding: 10px 20px;
+    border-radius: 100px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--accent) !important; color: var(--paper) !important; }
+
+  .hero { padding: 96px 0 80px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    padding: 6px 14px;
+    border: 0.5px solid var(--accent);
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+  h1.hero-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 76px;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+  h1.hero-title .italic { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin-bottom: 40px;
+    max-width: 540px;
+  }
+  .hero-cta-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    border: 0.5px solid var(--ink);
+  }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+  .btn-secondary {
+    color: var(--ink);
+    padding: 16px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    border: 0.5px solid var(--line-2);
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--ink); }
+  .arrow { display: inline-block; transition: transform 0.2s; }
+  .btn-primary:hover .arrow { transform: translateX(3px); }
+
+  .hero-visual { position: relative; aspect-ratio: 1 / 1; }
+  .hero-visual svg { width: 100%; height: 100%; }
+
+  .pill-stat {
+    margin-top: 56px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .pill-stat div { display: flex; flex-direction: column; }
+  .pill-stat .num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--accent);
+  }
+  .pill-stat .lbl { font-size: 13px; color: var(--ink-3); margin-top: 4px; }
+
+  .section { padding: 96px 0; border-top: 0.5px solid var(--line); }
+  .section-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 56px;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+  .section-title .italic { font-style: italic; color: var(--accent); }
+  .section-lede {
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 640px;
+    margin-bottom: 64px;
+  }
+
+  .endgoal {
+    padding: 56px 56px;
+    background: var(--paper);
+    border-radius: 24px;
+    border: 0.5px solid var(--line);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  .endgoal-num {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 120px;
+    line-height: 1;
+    color: var(--accent);
+  }
+  .endgoal h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 40px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+  .endgoal p { font-size: 17px; line-height: 1.6; color: var(--ink-2); }
+  .endgoal-deliverables {
+    margin-top: 20px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .endgoal-deliverables span {
+    background: var(--bg);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--ink-2);
+    border: 0.5px solid var(--line);
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 0.5px solid var(--line);
+  }
+  .problem-cell { background: var(--bg); padding: 40px 32px; }
+  .problem-cell h4 {
+    font-size: 15px;
+    color: var(--ink-3);
+    margin-bottom: 10px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .problem-cell p {
+    font-family: 'Instrument Serif', serif;
+    font-size: 26px;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+  .problem-cell.flipped { background: var(--paper); }
+  .problem-cell.flipped h4 { color: var(--accent-deep); }
+
+  .stages-list { display: flex; flex-direction: column; gap: 0; margin-top: 24px; }
+  .stage-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 1.6fr;
+    gap: 40px;
+    padding: 48px 0;
+    border-top: 0.5px solid var(--line);
+    align-items: start;
+  }
+  .stage-row:last-child { border-bottom: 0.5px solid var(--line); }
+  .stage-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 64px;
+    line-height: 1;
+    color: var(--accent);
+    font-style: italic;
+  }
+  .stage-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 38px;
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .stage-tag {
+    font-size: 13px;
+    color: var(--ink-3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .stage-meta {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--ink-2);
+    padding: 6px 12px;
+    background: var(--paper);
+    border-radius: 100px;
+    display: inline-block;
+    border: 0.5px solid var(--line);
+  }
+  .stage-body { padding-top: 12px; }
+  .stage-body p { color: var(--ink-2); font-size: 16px; line-height: 1.7; }
+  .stage-body .lead {
+    font-family: 'Instrument Serif', serif;
+    font-size: 20px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+  .stage-detail-list {
+    margin-top: 16px;
+    list-style: none;
+  }
+  .stage-detail-list li {
+    padding: 10px 0 10px 24px;
+    position: relative;
+    color: var(--ink-2);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .stage-detail-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .stage-output {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: var(--paper);
+    border-left: 2px solid var(--accent);
+    font-size: 14px;
+    color: var(--ink-2);
+  }
+  .stage-output strong { color: var(--ink); font-weight: 500; }
+
+  .calendar {
+    margin-top: 24px;
+    background: var(--paper);
+    border-radius: 24px;
+    border: 0.5px solid var(--line);
+    overflow: hidden;
+  }
+  .cal-header {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    padding: 28px 40px;
+    background: var(--ink);
+    color: var(--paper);
+    align-items: baseline;
+  }
+  .cal-header h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 32px;
+    font-weight: 400;
+  }
+  .cal-header span {
+    font-size: 13px;
+    color: rgba(251, 248, 242, 0.6);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .cal-week {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    padding: 28px 40px;
+    border-top: 0.5px solid var(--line);
+    align-items: start;
+  }
+  .cal-week:first-of-type { border-top: none; }
+  .cal-wk-num {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-size: 22px;
+  }
+  .cal-wk-tag {
+    font-size: 12px;
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .cal-wk-body p { font-size: 16px; color: var(--ink-2); line-height: 1.6; }
+  .cal-wk-body p strong { color: var(--ink); font-weight: 500; }
+  .cal-async {
+    grid-column: 1 / -1;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 0.5px dashed var(--line-2);
+    font-size: 14px;
+    color: var(--ink-2);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .cal-async strong { color: var(--accent-deep); }
+
+  .deliverables {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 0.5px solid var(--line);
+    margin-top: 24px;
+  }
+  .deliv-cell { background: var(--bg); padding: 32px 28px; }
+  .deliv-cell .num {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .deliv-cell h5 { font-size: 19px; margin-bottom: 8px; font-weight: 500; }
+  .deliv-cell p { font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+
+  .thesis {
+    padding: 64px 56px;
+    background: var(--paper);
+    border-radius: 24px;
+    border: 0.5px solid var(--line);
+    text-align: center;
+    margin-top: 40px;
+  }
+  .thesis blockquote {
+    font-family: 'Instrument Serif', serif;
+    font-size: 32px;
+    line-height: 1.3;
+    color: var(--ink);
+    font-style: italic;
+    max-width: 720px;
+    margin: 0 auto 24px;
+  }
+  .thesis cite {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-style: normal;
+  }
+
+  .who-for { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .who-list { list-style: none; }
+  .who-list li {
+    padding: 18px 0;
+    border-bottom: 0.5px solid var(--line);
+    font-size: 17px;
+    color: var(--ink-2);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .who-list li:last-child { border-bottom: none; }
+  .who-list .check {
+    color: var(--accent);
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    flex-shrink: 0;
+    font-size: 22px;
+    line-height: 1;
+    margin-top: 2px;
+  }
+
+  .cta-section {
+    padding: 120px 0;
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    border-top: 0.5px solid var(--ink);
+  }
+  .cta-section h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 72px;
+    line-height: 1;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+  .cta-section h2 .italic { font-style: italic; color: var(--accent); }
+  .cta-section p {
+    font-size: 19px;
+    color: rgba(251, 248, 242, 0.7);
+    max-width: 540px;
+    margin: 0 auto 40px;
+  }
+  .cta-btn {
+    background: var(--accent);
+    color: var(--paper);
+    padding: 18px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    border: 0.5px solid var(--accent);
+  }
+  .cta-btn:hover { background: transparent; border-color: var(--paper); }
+  .cta-foot {
+    margin-top: 32px;
+    font-size: 13px;
+    color: rgba(251, 248, 242, 0.5);
+    letter-spacing: 0.04em;
+  }
+
+  footer { padding: 48px 0; background: var(--bg-2); color: var(--ink-2); font-size: 14px; }
+  .foot-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .foot-tag { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--ink-3); }
+
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-visual { max-width: 440px; margin: 0 auto; }
+    h1.hero-title { font-size: 52px; }
+    .section-title { font-size: 40px; }
+    .section { padding: 72px 0; }
+    .hero { padding: 64px 0 56px; }
+    .endgoal { grid-template-columns: 1fr; padding: 40px 28px; gap: 16px; }
+    .endgoal-num { font-size: 88px; }
+    .endgoal h3 { font-size: 30px; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .stage-row { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
+    .stage-num { font-size: 48px; }
+    .stage-name { font-size: 30px; }
+    .cal-header, .cal-week { grid-template-columns: 1fr; padding: 24px 28px; gap: 8px; }
+    .deliverables { grid-template-columns: 1fr; }
+    .thesis { padding: 40px 28px; }
+    .thesis blockquote { font-size: 24px; }
+    .who-for { grid-template-columns: 1fr; gap: 32px; }
+    .cta-section h2 { font-size: 44px; }
+    .cta-section { padding: 80px 0; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .container, .container-narrow { padding: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">Contrarian Rocket<span class="dot">.</span></div>
+    <div class="nav-links">
+      <a href="#endgoal">The promise</a>
+      <a href="#stages">The 5 stages</a>
+      <a href="#calendar">The 30 days</a>
+      <a href="#book" class="nav-cta">Book the free hour</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">A 30-day brand sprint for innovative experts</span>
+      <h1 class="hero-title">
+        Most experts agree.<br>
+        <span class="italic">Contrarians</span> get remembered.
+      </h1>
+      <p class="hero-sub">
+        A 30-day, one-on-one sprint for solopreneurs and coaches whose brand isn't getting noticed. Five stages. By day 30, your positioning, your offer, your website and your content are live in the world.
+      </p>
+      <div class="hero-cta-row">
+        <a href="#book" class="btn-primary">Book the free hour <span class="arrow">→</span></a>
+        <a href="#stages" class="btn-secondary">See the 5 stages</a>
+      </div>
+      <div class="pill-stat">
+        <div>
+          <span class="num">30</span>
+          <span class="lbl">Days to launched</span>
+        </div>
+        <div>
+          <span class="num">5</span>
+          <span class="lbl">One-on-one sessions</span>
+        </div>
+        <div>
+          <span class="num">1:1</span>
+          <span class="lbl">WhatsApp access throughout</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <radialGradient id="trail" cx="50%" cy="100%" r="60%">
+            <stop offset="0%" stop-color="#D94F30" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#D94F30" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="80" cy="80" r="1" fill="#1A1A1A" opacity="0.4"/>
+        <circle cx="320" cy="60" r="1.5" fill="#1A1A1A" opacity="0.4"/>
+        <circle cx="60" cy="180" r="1" fill="#1A1A1A" opacity="0.4"/>
+        <circle cx="340" cy="220" r="1" fill="#1A1A1A" opacity="0.4"/>
+        <circle cx="100" cy="340" r="1.2" fill="#1A1A1A" opacity="0.4"/>
+        <circle cx="300" cy="350" r="1" fill="#1A1A1A" opacity="0.4"/>
+        <circle cx="200" cy="40" r="1" fill="#1A1A1A" opacity="0.4"/>
+        <ellipse cx="200" cy="340" rx="50" ry="80" fill="url(#trail)"/>
+        <g transform="translate(200,40)">
+          <path d="M 0 0 L -22 50 L 22 50 Z" fill="#D94F30" stroke="#1A1A1A" stroke-width="1"/>
+          <rect x="-22" y="50" width="44" height="80" fill="#FBF8F2" stroke="#1A1A1A" stroke-width="1"/>
+          <circle cx="0" cy="90" r="10" fill="none" stroke="#1A1A1A" stroke-width="1"/>
+          <circle cx="0" cy="90" r="4" fill="#1A1A1A"/>
+          <rect x="-22" y="130" width="44" height="100" fill="#FBF8F2" stroke="#1A1A1A" stroke-width="1"/>
+          <line x1="-22" y1="155" x2="22" y2="155" stroke="#1A1A1A" stroke-width="0.5" opacity="0.5"/>
+          <line x1="-22" y1="180" x2="22" y2="180" stroke="#1A1A1A" stroke-width="0.5" opacity="0.5"/>
+          <line x1="-22" y1="205" x2="22" y2="205" stroke="#1A1A1A" stroke-width="0.5" opacity="0.5"/>
+          <rect x="-22" y="230" width="44" height="50" fill="#FBF8F2" stroke="#1A1A1A" stroke-width="1"/>
+          <polygon points="-22,230 -42,280 -22,280" fill="#FBF8F2" stroke="#1A1A1A" stroke-width="1"/>
+          <polygon points="22,230 42,280 22,280" fill="#FBF8F2" stroke="#1A1A1A" stroke-width="1"/>
+          <ellipse cx="0" cy="280" rx="22" ry="6" fill="#1A1A1A"/>
+          <path d="M -10 285 Q 0 320 0 340 Q 0 320 10 285 Z" fill="#D94F30"/>
+          <path d="M -5 285 Q 0 305 0 320 Q 0 305 5 285 Z" fill="#FAC775"/>
+        </g>
+        <g opacity="0.3">
+          <line x1="50" y1="100" x2="120" y2="100" stroke="#1A1A1A" stroke-width="0.5" stroke-dasharray="3 3"/>
+          <line x1="280" y1="100" x2="350" y2="100" stroke="#1A1A1A" stroke-width="0.5" stroke-dasharray="3 3"/>
+          <line x1="50" y1="200" x2="100" y2="200" stroke="#1A1A1A" stroke-width="0.5" stroke-dasharray="3 3"/>
+          <line x1="300" y1="200" x2="350" y2="200" stroke="#1A1A1A" stroke-width="0.5" stroke-dasharray="3 3"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="endgoal">
+  <div class="container">
+    <span class="section-eyebrow">The promise</span>
+    <h2 class="section-title">What you'll have <span class="italic">on day 30.</span></h2>
+    <p class="section-lede">
+      Not a strategy doc to execute later. Not a framework PDF to study. By the time we finish, four things are live in the world — and you know how to keep them moving without me.
+    </p>
+
+    <div class="endgoal">
+      <div class="endgoal-num">30</div>
+      <div>
+        <h3>A launched contrarian brand</h3>
+        <p>Your positioning, your business model, your offer, your website and your contrarian content — all live by day 30. Built on a payload that's genuinely yours, sized to hit the income you actually want.</p>
+        <div class="endgoal-deliverables">
+          <span>Positioning &amp; POV</span>
+          <span>Business model &amp; offer</span>
+          <span>Live website</span>
+          <span>Contrarian content engine</span>
+          <span>Revenue plan to your target</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="inversion">
+  <div class="container">
+    <span class="section-eyebrow">The inversion</span>
+    <h2 class="section-title">Every brand coach<br>asks the <span class="italic">wrong</span> first question.</h2>
+    <p class="section-lede">
+      "Who's your audience? What's your niche?" Build a brand around an audience you don't love serving, at a price that doesn't fund the life you want, and you'll quit before the brand pays off. Contrarian Rocket starts somewhere else.
+    </p>
+    <div class="problem-grid">
+      <div class="problem-cell">
+        <h4>Everyone else</h4>
+        <p>"Pick a niche, define your audience, find the pain point."</p>
+      </div>
+      <div class="problem-cell flipped">
+        <h4>Contrarian Rocket</h4>
+        <p>"What's the one thread that's run through every chapter of your life — and what's worth building on it?"</p>
+      </div>
+      <div class="problem-cell">
+        <h4>Everyone else</h4>
+        <p>"Pick a niche and stick with the safe positioning."</p>
+      </div>
+      <div class="problem-cell flipped">
+        <h4>Contrarian Rocket</h4>
+        <p>"What does your industry agree on that you happen to think is wrong? That's your brand."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="stages">
+  <div class="container">
+    <span class="section-eyebrow">The process</span>
+    <h2 class="section-title">Five stages.<br>Each one ships <span class="italic">something</span> real.</h2>
+    <p class="section-lede">
+      A rocket needs a payload worth launching, fuel to break orbit, a trajectory no one else is taking, and stages that drop off once their work is done. Brand-building maps the same way.
+    </p>
+
+    <div class="stages-list">
+
+      <div class="stage-row">
+        <div class="stage-num">01</div>
+        <div>
+          <h3 class="stage-name">Payload</h3>
+          <span class="stage-tag">What's worth launching</span>
+          <div class="stage-meta">60 min · live 1:1</div>
+        </div>
+        <div class="stage-body">
+          <p class="lead">A guided biographical conversation, looking for the common thread.</p>
+          <p>We walk through the milestones of your life — the moments that mattered, the turns you took, the things you built, the things you walked away from. While you talk, I listen for the thread that connects them. The thing that's been showing up across every chapter, whether you've noticed it or not.</p>
+          <p>That thread is the intersection of five things — your bliss, what comes naturally to you, what you'd do unpaid, what you've mastered, and what you want to be doing in the future.</p>
+          <div class="stage-output">
+            <strong>You leave with:</strong> One clean sentence — the single intersection. Your Payload. Everything that follows is built on top of it.
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-row">
+        <div class="stage-num">02</div>
+        <div>
+          <h3 class="stage-name">Fuel</h3>
+          <span class="stage-tag">The number that funds it</span>
+          <div class="stage-meta">45 min · live 1:1</div>
+        </div>
+        <div class="stage-body">
+          <p class="lead">A sharp, direct conversation about money.</p>
+          <p>The question every other brand coach skips: how much do you actually want to earn? Not a vague "financial freedom" answer. A real number you'd commit to. And then the floor — the monthly minimum below which the brand is failing.</p>
+          <p>Two numbers. The ambition and the floor. Together they form the economic spine of the brand — the constraint that filters every later decision.</p>
+          <div class="stage-output">
+            <strong>You leave with:</strong> Your annual ambition and your monthly minimum. Specific. Honest. Not flinched.
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-row">
+        <div class="stage-num">03</div>
+        <div>
+          <h3 class="stage-name">Trajectory</h3>
+          <span class="stage-tag">Positioning, business model, offer</span>
+          <div class="stage-meta">90 min · live 1:1 · I present</div>
+        </div>
+        <div class="stage-body">
+          <p class="lead">I bring you the answer, not a menu of options.</p>
+          <p>Between Stage 2 and Stage 3 I take your Payload and your Fuel and build the business around it. I arrive at the session with one recommended trajectory — not three.</p>
+          <ul class="stage-detail-list">
+            <li>A one-line positioning statement</li>
+            <li>The contrarian point of view that drives it — what your industry says vs. what you'll say</li>
+            <li>A business model and core offer, sized to hit your Fuel number</li>
+            <li>A projected revenue path from monthly minimum to annual ambition</li>
+          </ul>
+          <p style="margin-top:14px;">You react. We sharpen together in the room.</p>
+          <div class="stage-output">
+            <strong>You leave with:</strong> Clarity on what you're selling, to whom, against whom, and at what price. Strategy turned into a sellable business.
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-row">
+        <div class="stage-num">04</div>
+        <div>
+          <h3 class="stage-name">Ignition</h3>
+          <span class="stage-tag">The contrarian content engine</span>
+          <div class="stage-meta">90 min · live 1:1</div>
+        </div>
+        <div class="stage-body">
+          <p class="lead">We turn your brand into something that gets remembered — by saying what others won't.</p>
+          <p>The brand promised on the homepage is built here. Together we surface the contrarian beliefs you hold against your industry — the things common wisdom in your space gets wrong, that you've been too polite to say. Those beliefs become the fuel for your content.</p>
+          <ul class="stage-detail-list">
+            <li>Surface the contrarian beliefs that anchor your point of view</li>
+            <li>Design the content system — pillars, formats, cadence, where it lives</li>
+            <li>Design the content strategy — how the beliefs sequence over weeks</li>
+            <li>Brief you on the homework: build out the populated content plan</li>
+          </ul>
+          <div class="stage-output">
+            <strong>You leave with:</strong> A list of contrarian beliefs, a content system, and a content strategy. Your homework: turn it into a full content plan you'll launch in Stage 5.
+          </div>
+        </div>
+      </div>
+
+      <div class="stage-row">
+        <div class="stage-num">05</div>
+        <div>
+          <h3 class="stage-name">Orbit</h3>
+          <span class="stage-tag">After you've launched</span>
+          <div class="stage-meta">90 min · live 1:1 · after launch</div>
+        </div>
+        <div class="stage-body">
+          <p class="lead">You publish on your own. Then we sit down and make you sustainable.</p>
+          <p>This is the contrarian way to end a brand sprint. Other coaches "launch with you," which creates dependence. I want you to publish your website and your first wave of content without me — so you've already proven you can. Then we sit down to make you better at doing it alone.</p>
+          <ul class="stage-detail-list">
+            <li>Debrief the launch — what landed, what didn't, what surprised you</li>
+            <li>Teach the fastest way to make contrarian content, so the rhythm holds</li>
+            <li>Show you how the content engine actually converts to income against your Fuel number</li>
+          </ul>
+          <div class="stage-output">
+            <strong>By the end of Stage 5:</strong> Website live. Offer live. Content live. And the skill to keep it all in orbit without me.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="calendar">
+  <div class="container">
+    <span class="section-eyebrow">The 30 days</span>
+    <h2 class="section-title">A sprint, not a <span class="italic">course.</span></h2>
+    <p class="section-lede">
+      Five live one-on-one sessions across four weeks. Six and a quarter hours of focused work, plus daily WhatsApp access between sessions. By day 30, the brand is live.
+    </p>
+
+    <div class="calendar">
+      <div class="cal-header">
+        <h3>30 Days</h3>
+        <span>The full sprint, week by week</span>
+      </div>
+
+      <div class="cal-week">
+        <div>
+          <div class="cal-wk-num">Week 01</div>
+          <div class="cal-wk-tag">Diagnose</div>
+        </div>
+        <div class="cal-wk-body">
+          <p><strong>Stage 1 — Payload (60 min).</strong> The biographical session. Find the thread.</p>
+          <p style="margin-top:8px;"><strong>Stage 2 — Fuel (45 min).</strong> The money conversation. Land the two numbers.</p>
+        </div>
+      </div>
+
+      <div class="cal-week">
+        <div>
+          <div class="cal-wk-num">Week 02</div>
+          <div class="cal-wk-tag">Build the business</div>
+        </div>
+        <div class="cal-wk-body">
+          <p>Between sessions, I build your trajectory — positioning, model, offer, revenue path.</p>
+          <p style="margin-top:8px;"><strong>Stage 3 — Trajectory (90 min).</strong> I present. We sharpen together. You leave with a business.</p>
+        </div>
+      </div>
+
+      <div class="cal-week">
+        <div>
+          <div class="cal-wk-num">Week 03</div>
+          <div class="cal-wk-tag">Build the brand</div>
+        </div>
+        <div class="cal-wk-body">
+          <p><strong>Stage 4 — Ignition (90 min).</strong> Surface contrarian beliefs. Design the content engine.</p>
+          <p style="margin-top:8px;">You do the homework — populated content plan, drafted content, website ready.</p>
+        </div>
+      </div>
+
+      <div class="cal-week">
+        <div>
+          <div class="cal-wk-num">Week 04</div>
+          <div class="cal-wk-tag">Launch &amp; orbit</div>
+        </div>
+        <div class="cal-wk-body">
+          <p>You publish — website, content, offer, all live.</p>
+          <p style="margin-top:8px;"><strong>Stage 5 — Orbit (90 min).</strong> Debrief. Teach sustainability. Show how content turns to income.</p>
+        </div>
+      </div>
+
+      <div class="cal-week">
+        <div class="cal-async">
+          <strong>Throughout all 30 days:</strong>
+          <span>WhatsApp / Slack access for questions, drafts, and decisions between sessions.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="walkaway">
+  <div class="container">
+    <span class="section-eyebrow">What you keep</span>
+    <h2 class="section-title">Five things live. <span class="italic">Yours.</span></h2>
+    <p class="section-lede">
+      No theory, no frameworks gathering dust. Five concrete things — most of them live in the world by day 30.
+    </p>
+
+    <div class="deliverables">
+      <div class="deliv-cell">
+        <div class="num">i.</div>
+        <h5>A positioning statement and contrarian POV</h5>
+        <p>One line ready for your bio. One point of view ready to defend against any objection.</p>
+      </div>
+      <div class="deliv-cell">
+        <div class="num">ii.</div>
+        <h5>A business model and offer that hit your number</h5>
+        <p>What you're selling, who pays, the price, the revenue path from minimum to ambition.</p>
+      </div>
+      <div class="deliv-cell">
+        <div class="num">iii.</div>
+        <h5>A live website</h5>
+        <p>Built and published by you in week 4 — based on the positioning and offer from Stage 3.</p>
+      </div>
+      <div class="deliv-cell">
+        <div class="num">iv.</div>
+        <h5>A contrarian content engine, live</h5>
+        <p>System, strategy, content plan, and the first wave of published posts shipped.</p>
+      </div>
+      <div class="deliv-cell" style="grid-column: 1 / -1;">
+        <div class="num">v.</div>
+        <h5>The skill to keep it in orbit without me</h5>
+        <p>The fastest way to make contrarian content, and how to convert it to income. By design, you finish the sprint independent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="who">
+  <div class="container">
+    <div class="who-for">
+      <div>
+        <span class="section-eyebrow">Who it's for</span>
+        <h2 class="section-title">If any of this <span class="italic">sounds</span> like you.</h2>
+        <p class="section-lede">
+          Contrarian Rocket is built for one kind of person. If you nod at three of the five below, we should talk.
+        </p>
+      </div>
+      <ul class="who-list">
+        <li><span class="check">✦</span>You're already an expert — but you feel invisible on the platforms where it should be paying off.</li>
+        <li><span class="check">✦</span>You've been posting and pitching but the brand isn't compounding.</li>
+        <li><span class="check">✦</span>You suspect your positioning is too safe, too crowded, or too much like everyone else's.</li>
+        <li><span class="check">✦</span>You want a brand you'd actually want to live inside for the next decade.</li>
+        <li><span class="check">✦</span>You're done with frameworks. You want a launched brand with your specific name and number on it.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="thesis">
+  <div class="container-narrow">
+    <span class="section-eyebrow">The thesis</span>
+    <h2 class="section-title">Why this <span class="italic">works.</span></h2>
+    <div class="thesis">
+      <blockquote>
+        Most brand coaches ask: who's your audience? That's the wrong first question. If you build a brand around an audience you don't love serving, at a price that doesn't fund the life you want, you'll quit before the brand pays off. The right first question is: what's the thread that's run through every chapter of your life, and what's worth building on top of it? Then ask: what does your industry agree on that you happen to think is wrong? Build the brand from those two answers — and you'll never have to fake consistency again.
+      </blockquote>
+      <cite>The Contrarian Rocket thesis</cite>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="book">
+  <div class="container-narrow">
+    <h2>The free hour is <span class="italic">free</span>.<br>The decision after is yours.</h2>
+    <p>Sixty minutes, one on one. We do a piece of Stage 1 together. You leave with the first thread of your Payload — whether or not you ever sign up for the full 30 days.</p>
+    <a href="mailto:hello@contrarianrocket.com" class="cta-btn">Book the free hour <span class="arrow">→</span></a>
+    <div class="cta-foot">Limited intake — six clients per quarter</div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot-inner">
+    <div>© Contrarian Rocket</div>
+    <div class="foot-tag">Fewer launches. Further orbits.</div>
+  </div>
+</footer>
+
+</body>
+</html>
